@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import Signup from "./components/Signup";
+import Login from './components/Login';
+import Menu from "./components/Menu";
+import { Toaster } from "react-hot-toast";
+import "../src/style.css"
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from 'react-router-dom'
+import User from "./components/Menu/user";
+import Comment from "./components/Menu/comment";
 
 function App() {
+  let session_token = document.cookie.match("(^|;) ?session_token=([^;]*)(;|$)")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Switch>
+          {
+            session_token && session_token[2] ?
+              <>
+                <Route path="/user" exact render={(props) => <Menu {...props}>
+                  <User />
+                </Menu>} />
+                <Route path="/comment" exact render={(props) => <Menu {...props}>
+                  <Comment />
+                </Menu>} />
+              </>
+              :
+              <Route path="/" exact render={(props) => <Login {...props} />} />
+          }
+          <Route path="/singup" exact render={(props) => <Signup {...props} />} />
+          <Route path="*" exact render={(props) => <Login {...props} />} />
+        </Switch>
+      </Router>
+      <Toaster position={"top-center"} reverseOrder={false} />
+    </>
   );
 }
 
