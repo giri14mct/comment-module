@@ -26,7 +26,7 @@ const User = () => {
     ).catch(e =>
       handleToast(e.response.status, e.response.statusText)
     )
-  }, [])
+  }, [session_token])
 
   const handleChange = (e, obj) => {
     axios.put(`${api_host}/api/v1/users/${obj}`, { status: e.target.value },

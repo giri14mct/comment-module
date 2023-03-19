@@ -6,7 +6,6 @@ import "../src/style.css"
 import {
   BrowserRouter as Router,
   Route,
-  Redirect,
   Switch,
 } from 'react-router-dom'
 import User from "./components/Menu/user";

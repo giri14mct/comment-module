@@ -63,7 +63,7 @@ const Comment = () => {
     ).catch(e =>
       handleToast(e.response.status, e.response.data.data[0])
     )
-  }, [])
+  }, [session_token])
 
   const handleChange = (e, obj) => {
     axios.put(`${api_host}/api/v1/comments/${obj}`, { status: e.target.value },
