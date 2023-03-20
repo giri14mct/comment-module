@@ -31,7 +31,7 @@ const Login = (props) => {
       document.cookie = `role = ${data.data.role}; expires = ${new Date(2147483647 * 1000).toUTCString()}`
 
       handleToast(200, data.message)
-      props.history.push('/user')
+      props.history.push('/users')
       window.location.reload();
     }).catch(e => {
       handleToast(e.response.status, e.response.statusText)

@@ -37,8 +37,8 @@ const Menu = (props) => {
             <div style={{ width: "100%", height: "100%", borderBottom: "none", display: "flex" }}>
                 <div style={{ width: "20%", boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" }}>
                     <div>
-                        <p style={{ cursor: "pointer" }} onClick={() => handleMenu("user")}>Users</p>
-                        <p style={{ cursor: "pointer" }} onClick={() => handleMenu("comment")}>Comments</p>
+                        <p style={{ cursor: "pointer" }} onClick={() => handleMenu("users")}>Users</p>
+                        <p style={{ cursor: "pointer" }} onClick={() => handleMenu("comments")}>Comments</p>
                     </div>
                 </div>
                 <div style={{ width: "80%", padding: 12, background: "rgb(236, 217, 217)" }}>

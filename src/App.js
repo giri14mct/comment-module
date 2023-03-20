@@ -20,10 +20,10 @@ function App() {
           {
             session_token && session_token[2] ?
               <>
-                <Route path="/user" exact render={(props) => <Menu {...props}>
+                <Route path="/users" exact render={(props) => <Menu {...props}>
                   <User />
                 </Menu>} />
-                <Route path="/comment" exact render={(props) => <Menu {...props}>
+                <Route path="/comments" exact render={(props) => <Menu {...props}>
                   <Comment />
                 </Menu>} />
               </>
