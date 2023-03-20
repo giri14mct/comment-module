@@ -20,17 +20,17 @@ function App() {
           {
             session_token && session_token[2] ?
               <>
-                <Route path="/users" exact render={(props) => <Menu {...props}>
+                <Route path="/users"  render={(props) => <Menu {...props}>
                   <User />
                 </Menu>} />
-                <Route path="/comments" exact render={(props) => <Menu {...props}>
+                <Route path="/comments"  render={(props) => <Menu {...props}>
                   <Comment />
                 </Menu>} />
               </>
               :
-              <Route path="/" exact render={(props) => <Login {...props} />} />
+              <Route path="/"  render={(props) => <Login {...props} />} />
           }
-          <Route path="/singup" exact render={(props) => <Signup {...props} />} />
+          <Route path="/singup"  render={(props) => <Signup {...props} />} />
           <Route path="*" exact render={(props) => <Login {...props} />} />
         </Switch>
       </Router>
