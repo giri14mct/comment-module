@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from "axios";
 import { handleToast } from "../toast";
 import { api_host } from "../../config";
@@ -6,7 +6,7 @@ import moment from 'moment';
 import { titleize } from '../helper';
 
 const User = () => {
-  const [data, setData] = useState([])
+  const [data] = useState([])
 
   let session_token = document.cookie.match("(^|;) ?session_token=([^;]*)(;|$)")
   let role = document.cookie.match("(^|;) ?role=([^;]*)(;|$)")
