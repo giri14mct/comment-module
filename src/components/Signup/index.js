@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { handleToast } from "../toast";
 import axios from "axios";
+import { api_host } from "../../config";
 
 const Signup = (props) => {
     const [email, setEmail] = useState('')
@@ -23,7 +24,7 @@ const Signup = (props) => {
         e.preventDefault()
 
         if (password === confirmPassword) {
-            await axios.post(`https://c7d8-49-37-202-53.in.ngrok.io/authentication/singup`, {
+            await axios.post(`${api_host}/authentication/singup`, {
                 user: {
                     email, password, password_confirmation: confirmPassword
                 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import { handleToast } from "../toast";
+import { api_host } from "../../config";
 import moment from 'moment';
 import { titleize } from '../helper';
 
@@ -11,7 +12,7 @@ const User = () => {
   let role = document.cookie.match("(^|;) ?role=([^;]*)(;|$)")
 
   useEffect(() => {
-    axios.get(`https://c7d8-49-37-202-53.in.ngrok.io/api/v1/users`,
+    axios.get(`${api_host}/api/v1/users`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -29,7 +30,7 @@ const User = () => {
   }, [])
 
   const handleChange = (e, obj) => {
-    axios.put(`https://c7d8-49-37-202-53.in.ngrok.io/api/v1/users/${obj}`, { status: e.target.value },
+    axios.put(`${api_host}/api/v1/users/${obj}`, { status: e.target.value },
       {
         headers: {
           'Content-Type': 'application/json',

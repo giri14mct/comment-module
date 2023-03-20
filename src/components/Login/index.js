@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { handleToast } from "../toast";
 import axios from "axios";
+import { api_host } from "../../config";
 
 const Login = (props) => {
   const [email, setEmail] = useState('')
@@ -17,7 +18,7 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await axios.post(`https://c7d8-49-37-202-53.in.ngrok.io/authentication/login`, {
+    await axios.post(`${api_host}/authentication/login`, {
       email, password
     },
       {
@@ -30,7 +31,7 @@ const Login = (props) => {
       document.cookie = `role = ${data.data.role}; expires = ${new Date(2147483647 * 1000).toUTCString()}`
 
       handleToast(200, data.message)
-      props.history.push('/users')
+      props.history.push('/comments')
       window.location.reload();
     }).catch(e => {
       handleToast(e.response.status, e.response.statusText)

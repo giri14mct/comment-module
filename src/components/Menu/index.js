@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { handleToast } from "../toast";
+import { api_host } from "../../config";
 
 const Menu = (props) => {
     let session_token = document.cookie.match("(^|;) ?session_token=([^;]*)(;|$)")
@@ -10,7 +11,7 @@ const Menu = (props) => {
     }
 
     const handleLogout = () => {
-        axios.post(`https://c7d8-49-37-202-53.in.ngrok.io/authentication/logout`, {},
+        axios.post(`${api_host}/authentication/logout`, {},
             {
                 headers: {
                     'Content-Type': 'application/json',
