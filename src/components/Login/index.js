@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { handleToast } from "../toast";
 import axios from "axios";
-import { api_host } from "../../config";
 
 const Login = (props) => {
   const [email, setEmail] = useState('')

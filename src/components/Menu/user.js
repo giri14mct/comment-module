@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import { handleToast } from "../toast";
-import { api_host } from "../../config";
 import moment from 'moment';
 import { titleize } from '../helper';
 

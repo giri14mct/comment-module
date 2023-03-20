@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import { handleToast } from "../toast";
-import { api_host } from "../../config";
 
 const Menu = (props) => {
     let session_token = document.cookie.match("(^|;) ?session_token=([^;]*)(;|$)")
