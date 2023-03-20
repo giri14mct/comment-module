@@ -11,7 +11,7 @@ const Menu = (props) => {
     }
 
     const handleLogout = () => {
-        axios.post(`${api_host}/authentication/logout`, {},
+        axios.post(`https://c7d8-49-37-202-53.in.ngrok.io/authentication/logout`, {},
             {
                 headers: {
                     'Content-Type': 'application/json',

@@ -24,7 +24,7 @@ const Signup = (props) => {
         e.preventDefault()
 
         if (password === confirmPassword) {
-            await axios.post(`${api_host}/authentication/singup`, {
+            await axios.post(`https://c7d8-49-37-202-53.in.ngrok.io/authentication/singup`, {
                 user: {
                     email, password, password_confirmation: confirmPassword
                 }

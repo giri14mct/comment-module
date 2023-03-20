@@ -18,7 +18,7 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await axios.post(`${api_host}/authentication/login`, {
+    await axios.post(`https://c7d8-49-37-202-53.in.ngrok.io/authentication/login`, {
       email, password
     },
       {

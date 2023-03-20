@@ -25,7 +25,7 @@ const Comment = () => {
     setContent(e.target.value)
   }
   const handleCreatePost = () => {
-    axios.post(`${api_host}/api/v1/comments`,
+    axios.post(`https://c7d8-49-37-202-53.in.ngrok.io/api/v1/comments`,
       {
         comment: {
           content: content
@@ -49,7 +49,7 @@ const Comment = () => {
   }
 
   useEffect(() => {
-    axios.get(`${api_host}/api/v1/comments`,
+    axios.get(`https://c7d8-49-37-202-53.in.ngrok.io/api/v1/comments`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const Comment = () => {
   }, [])
 
   const handleChange = (e, obj) => {
-    axios.put(`${api_host}/api/v1/comments/${obj}`, { status: e.target.value },
+    axios.put(`https://c7d8-49-37-202-53.in.ngrok.io/api/v1/comments/${obj}`, { status: e.target.value },
       {
         headers: {
           'Content-Type': 'application/json',
