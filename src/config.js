@@ -1,1 +1,1 @@
-export const api_host = "http://3.110.94.12"
+export const api_host = "https://c7d8-49-37-202-53.in.ngrok.io"

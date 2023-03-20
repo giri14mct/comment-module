@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import "../src/style.css"
 import {
   BrowserRouter as Router,
+  Redirect,
   Route,
   Switch,
 } from 'react-router-dom'
@@ -17,21 +18,21 @@ function App() {
     <>
       <Router>
         <Switch>
+          <Route path="/users" render={(props) => <Menu {...props}>
+            <User />
+          </Menu>} />
+          <Route path="/comments" render={(props) => <Menu {...props}>
+            <Comment />
+          </Menu>} />
+          <Route path="/singup" render={(props) => <Signup {...props} />} />
+          <Route path="/" render={(props) => <Login {...props} />} />
+
           {
             session_token && session_token[2] ?
-              <>
-                <Route path="/users"  render={(props) => <Menu {...props}>
-                  <User />
-                </Menu>} />
-                <Route path="/comments"  render={(props) => <Menu {...props}>
-                  <Comment />
-                </Menu>} />
-              </>
+              <Redirect to="/users" exact />
               :
-              <Route path="/"  render={(props) => <Login {...props} />} />
+              <Redirect to="/" exact />
           }
-          <Route path="/singup"  render={(props) => <Signup {...props} />} />
-          <Route path="*" exact render={(props) => <Login {...props} />} />
         </Switch>
       </Router>
       <Toaster position={"top-center"} reverseOrder={false} />

@@ -49,7 +49,6 @@ const Comment = () => {
   }
 
   useEffect(() => {
-    console.log(api_host, "api_host");
     axios.get(`${api_host}/api/v1/comments`,
       {
         headers: {
