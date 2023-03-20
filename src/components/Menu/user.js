@@ -12,7 +12,9 @@ const User = () => {
   let role = document.cookie.match("(^|;) ?role=([^;]*)(;|$)")
 
   useEffect(() => {
-    axios.get(`${api_host}/api/v1/users`,
+
+    const fetchUser = async() => {
+     await axios.get(`${api_host}/api/v1/users`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -26,6 +28,8 @@ const User = () => {
     ).catch(e =>
       handleToast(e.response.status, e.response.statusText)
     )
+    }
+    fetchUser()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
