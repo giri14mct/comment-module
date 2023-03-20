@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { handleToast } from "../toast";
 import axios from "axios";
 import { api_host } from "../../config";
+import { useNavigate } from "react-router-dom";
 
-const Login = (props) => {
+const Login = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -31,8 +33,7 @@ const Login = (props) => {
       document.cookie = `role = ${data.data.role}; expires = ${new Date(2147483647 * 1000).toUTCString()}`
 
       handleToast(200, data.message)
-      props.history.push('/users')
-      window.location.reload();
+      navigate('/users')
     }).catch(e => {
       handleToast(e.response.status, e.response.statusText)
     }
@@ -52,7 +53,7 @@ const Login = (props) => {
           <input type="password" placeholder="" onChange={handlePasswordChange} />
         </div>
         <button onClick={handleSubmit}>Submit</button>
-        <p className="link" onClick={() => props.history.push("/singup")}>
+        <p className="link" onClick={() => navigate("/singup")}>
           You don't have an account?
         </p>
       </div>

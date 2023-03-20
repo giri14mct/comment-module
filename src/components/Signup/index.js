@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { handleToast } from "../toast";
 import axios from "axios";
 import { api_host } from "../../config";
+import { useNavigate } from "react-router-dom";
 
-const Signup = (props) => {
+const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const navigate = useNavigate()
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
@@ -36,7 +38,7 @@ const Signup = (props) => {
                 }
             ).then(({ data }) => {
                 handleToast(200, data.message)
-                props.history.push("/")
+                navigate('/')
             }).catch(e => {
                 handleToast(e.response.status, e.response.data.data[0])
             }
@@ -65,7 +67,7 @@ const Signup = (props) => {
                     <input type="password" onChange={handlePasswordConfirm} />
                 </div>
                 <button onClick={handleSubmit}>Submit</button>
-                <p className="link" onClick={() => props.history.push("/")}>
+                <p className="link" onClick={() =>  navigate('/')}>
                     Already have an account?
                 </p>
             </div>

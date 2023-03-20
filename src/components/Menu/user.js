@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import { handleToast } from "../toast";
 import { api_host } from "../../config";
@@ -6,32 +6,32 @@ import moment from 'moment';
 import { titleize } from '../helper';
 
 const User = () => {
-  const [data] = useState([])
+  const [data, setData] = useState([])
 
   let session_token = document.cookie.match("(^|;) ?session_token=([^;]*)(;|$)")
   let role = document.cookie.match("(^|;) ?role=([^;]*)(;|$)")
 
-  // useEffect(() => {
+  useEffect(() => {
 
-    // const fetchUser = async() => {
-    //  await axios.get(`${api_host}/api/v1/users`,
-    //   {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Authorization': session_token && session_token[2]
-    //     }
-    //   }
-    // ).then(
-    //   ({ data }) => {
-    //     setData(data.data);
-    //   }
-    // ).catch(e =>
-    //   handleToast(e.response.status, e.response.statusText)
-    // )
-    // }
-    // fetchUser()
+    const fetchUser = async () => {
+      await axios.get(`${api_host}/api/v1/users`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': session_token && session_token[2]
+          }
+        }
+      ).then(
+        ({ data }) => {
+          setData(data.data);
+        }
+      ).catch(e =>
+        handleToast(e.response.status, e.response.statusText)
+      )
+    }
+    fetchUser()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
+  }, [])
 
   const handleChange = (e, obj) => {
     axios.put(`${api_host}/api/v1/users/${obj}`, { status: e.target.value },
