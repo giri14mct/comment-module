@@ -34,7 +34,7 @@ const User = () => {
   }, [])
 
   const handleChange = (e, obj) => {
-    axios.put(`${api_host}/api/v1/users/${obj}`, { status: e.target.value },
+    axios.put(`${api_host}/api/v1/users/${obj.id}`, { [e.target.name]: e.target.value },
       {
         headers: {
           'Content-Type': 'application/json',
@@ -69,14 +69,31 @@ const User = () => {
                 <td data-column="Status">
                   {
                     role[2] !== "user" ?
-                      <select name={item.status} id={item.status} onChange={(e) => handleChange(e, item.id)}>
+                      <select name={"status"} id={item.status} onChange={(e) => handleChange(e, item)}>
                         <option selected={item.status === "active" && "selected"} value="active">Active</option>
                         <option selected={item.status === "inactive" && "selected"} value="inactive">Inactive</option>
                       </select>
                       : <p> {item.status} </p>
                   }
                 </td>
-                <td data-column="Role">{titleize(item.role)}</td>
+                <td data-column="Role">
+                  {
+                    (role[2] === "user") ? <p>{titleize(item.role)}</p> :
+                      (
+                        role[2] === "admin" ? (
+                          <select name={"role"} id={item.role} onChange={(e) => handleChange(e, item)}>
+                            <option selected={item.role === "user" && "selected"} value="user">User</option>
+                            <option selected={item.role === "admin" && "selected"} value="admin">Admin</option>
+                          </select>
+                        ) : role[2] === "super_admin" &&
+                        <select name={"role"} id={item.role} onChange={(e) => handleChange(e, item)}>
+                          <option selected={item.role === "user" && "selected"} value="user">User</option>
+                          <option selected={item.role === "admin" && "selected"} value="admin">Admin</option>
+                          <option selected={item.role === "super_admin" && "selected"} value="super_admin">Super Admin</option>
+                        </select>
+                      )
+                  }
+                </td>
                 <td data-column="Last LoggedIn">{moment(item.last_logged_in).format("lll")}</td>
               </tr>
             )
