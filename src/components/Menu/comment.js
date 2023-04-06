@@ -41,6 +41,7 @@ const Comment = () => {
       ({ data }) => {
         handleToast(200, data.message)
         handleClose()
+        fetchComments()
       }
     ).catch(e =>
       handleToast(e.response.status, e.response.data.data[0])
@@ -48,7 +49,7 @@ const Comment = () => {
 
   }
 
-  useEffect(() => {
+  const fetchComments = async () => {
     axios.get(`${api_host}/api/v1/comments`,
       {
         headers: {
@@ -63,6 +64,9 @@ const Comment = () => {
     ).catch(e =>
       handleToast(e.response.status, e.response.data.data[0])
     )
+  }
+  useEffect(() => {
+    fetchComments()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -95,6 +99,7 @@ const Comment = () => {
             <tr>
               <th>Content</th>
               <th>Status</th>
+              <th>Commented By</th>
             </tr>
           </thead>
           <tbody>
@@ -104,14 +109,20 @@ const Comment = () => {
                   <td data-column="Content">{item.content}</td>
                   <td data-column="Status">
                     {
-                      role[2] !== "user" ?
+                      role[2] == "super_admin" ?
                         <select name={item.status} onChange={(e) => handleChange(e, item.id)}>
                           <option selected={item.status === "drafted" && "selected"} value="drafted">Drafted</option>
+                          <option selected={item.status === "approved" && "selected"} value="approved">Approved</option>
                           <option selected={item.status === "published" && "selected"} value="published">Published</option>
                         </select>
-                        : <p> {titleize(item.status)} </p>
+                        : role[2] === "admin" ?
+                          <select name={item.status} onChange={(e) => handleChange(e, item.id)}>
+                            <option selected={item.status === "drafted" && "selected"} value="drafted">Drafted</option>
+                            <option selected={item.status === "approved" && "selected"} value="approved">Approved</option>
+                          </select> : <p> {titleize(item.status)} </p>
                     }
                   </td>
+                  <td data-column="Commented By">{item.created_by.email}</td>
                 </tr>
               )
             })}

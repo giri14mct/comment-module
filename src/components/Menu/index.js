@@ -23,7 +23,6 @@ const Menu = (props) => {
                 // set past expiry to all cookies
                 Cookies.map(arr => document.cookie = arr + "=; expires=" + new Date(0).toUTCString())
                 navigate("/")
-                // window.location.reload()
                 handleToast(200, data.message)
             }
         ).catch(e =>
