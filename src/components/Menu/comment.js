@@ -109,7 +109,7 @@ const Comment = () => {
                   <td data-column="Content">{item.content}</td>
                   <td data-column="Status">
                     {
-                      role[2] == "super_admin" ?
+                      role[2] === "super_admin" ?
                         <select name={item.status} onChange={(e) => handleChange(e, item.id)}>
                           <option selected={item.status === "drafted" && "selected"} value="drafted">Drafted</option>
                           <option selected={item.status === "approved" && "selected"} value="approved">Approved</option>
