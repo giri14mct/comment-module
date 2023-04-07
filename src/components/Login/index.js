@@ -31,6 +31,7 @@ const Login = () => {
     ).then(({ data }) => {
       document.cookie = `session_token = ${data.data.session_token}; expires = ${new Date(2147483647 * 1000).toUTCString()}`;
       document.cookie = `role = ${data.data.role}; expires = ${new Date(2147483647 * 1000).toUTCString()}`
+      document.cookie = `id = ${data.data.id}; expires = ${new Date(2147483647 * 1000).toUTCString()}`
 
       handleToast(200, data.message)
       navigate('/users')

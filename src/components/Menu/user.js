@@ -34,8 +34,9 @@ const User = () => {
     )
   }
 
-  const fetchRole = async (id) => {
-    await axios.get(`${api_host}/api/v1/users/${id}/role`,
+  const fetchRole = async () => {
+  let id = document.cookie.match("(^|;) ?id=([^;]*)(;|$)")
+    await axios.get(`${api_host}/api/v1/users/${id[2]}/role`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +64,7 @@ const User = () => {
       }
     ).then(
       ({ data }) => {
-        fetchRole(obj.id)
+        fetchRole()
         fetchUser()
         handleToast(200, data.message)
       }
@@ -116,7 +117,7 @@ const User = () => {
                       )
                   }
                 </td>
-                <td data-column="Last LoggedIn">{moment(item.last_logged_in).format("lll")}</td>
+                <td data-column="Last LoggedIn">{item.last_logged_in ? moment(item.last_logged_in).format("lll") : "-"}</td>
               </tr>
             )
           })}
