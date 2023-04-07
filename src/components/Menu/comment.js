@@ -115,14 +115,14 @@ const Comment = () => {
                           <option selected={item.status === "approved" && "selected"} value="approved">Approved</option>
                           <option selected={item.status === "published" && "selected"} value="published">Published</option>
                         </select>
-                        : role[2] === "admin" ?
+                        : role[2] === "admin" && item.status !== "published" ?
                           <select name={item.status} onChange={(e) => handleChange(e, item.id)}>
                             <option selected={item.status === "drafted" && "selected"} value="drafted">Drafted</option>
                             <option selected={item.status === "approved" && "selected"} value="approved">Approved</option>
                           </select> : <p> {titleize(item.status)} </p>
                     }
                   </td>
-                  <td data-column="Commented By">{item.created_by.email}</td>
+                  <td data-column="Commented By">{item.created_by ? item.created_by.email : <p> User Might Get Deleted</p>}</td>
                 </tr>
               )
             })}
