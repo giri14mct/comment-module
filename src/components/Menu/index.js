@@ -41,10 +41,10 @@ const Menu = (props) => {
                     <ul className="menu-list">
 
                         <li className="menu-items">
-                            <a href="/comments" ><MdInsertComment size={20} /><span className="menu-typo">Comments</span></a>
+                            <p style={{ cursor: "pointer" }} onClick={() => navigate('/comments')} ><MdInsertComment size={20} /><span className="menu-typo">Comments</span></p>
                         </li>
                         <li className="menu-items">
-                            <a href="/users" ><FaUser size={20} /><span className="menu-typo">Users</span></a>
+                            <p style={{ cursor: "pointer" }} onClick={() => navigate('/users')}  ><FaUser size={20} /><span className="menu-typo">Users</span></p>
                         </li>
 
                     </ul>

@@ -115,31 +115,14 @@ th {
 }
 
 .menu-items {
-    padding: 20px;
+    padding: 10px 20px;
     justify-self: center;
+    color: white;
 }
 
 .menu-typo {
     font-size: 20px;
     margin-left: 10px;
-
-}
-
-
-a:visited {
-    color: #fff;
-}
-
-a:hover {
-    color: #EDCBB1;
-    text-decoration: underline;
-}
-
-a:active,
-a:link {
-    color: #9155FD !important;
-    text-decoration: none !important;
-
 }
 
 .comment-input {
