@@ -3,6 +3,8 @@ import axios from "axios";
 import { handleToast } from "../toast";
 import { api_host } from "../../config";
 import { titleize } from '../helper';
+import { MdAddComment } from 'react-icons/md';
+
 
 const Comment = () => {
   const [data, setData] = useState([])
@@ -92,7 +94,7 @@ const Comment = () => {
 
       <div style={{ width: "100%", position: "relative" }}>
         <div style={{ width: "99%", textAlign: "end", margin: "10px 0px" }}>
-          <button onClick={handleOpen} >Create Comment</button>
+          <button onClick={handleOpen} ><MdAddComment size={20} /><span className="menu-typo">Create Comment</span></button>
         </div>
         <table>
           <thead>
@@ -130,13 +132,14 @@ const Comment = () => {
         </table>
         {
           open &&
-          <div style={{ position: "absolute", top: "50%", background: "#fff", boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px", width: "50%", height: "10rem", borderRadius: 5, left: "20%" }}>
+          <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "#fff", boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px", width: "50%", height: "30vh", borderRadius: 5 }}>
 
-            <div style={{ width: "80%", padding: 20 }}>
-              <label>Enter your comment</label>
-              <input style={{ border: "none", borderBottom: "1px solid", borderRadius: "initial" }} onChange={(e) => handleContentChange(e)} />
+            <div style={{ padding: "20px 40px", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+              <div style={{ width: "100%" }}>
+                <label >Enter your comment</label>
+                <input type='text' className='comment-input' onChange={(e) => handleContentChange(e)} /></div>
               <div style={{ width: "100%", textAlign: "center", marginTop: "2rem" }}>
-                <button onClick={handleCreatePost} >Create Comment</button>
+                <button onClick={handleCreatePost} className="menu-typo">Create Comment</button>
               </div>
             </div>
           </div>

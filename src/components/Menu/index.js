@@ -3,6 +3,10 @@ import axios from "axios";
 import { handleToast } from "../toast";
 import { api_host } from "../../config";
 import { useNavigate } from "react-router-dom";
+import { FaUser } from 'react-icons/fa';
+import { MdInsertComment } from 'react-icons/md';
+import { FiLogOut } from 'react-icons/fi';
+
 
 const Menu = (props) => {
     let session_token = document.cookie.match("(^|;) ?session_token=([^;]*)(;|$)")
@@ -33,15 +37,21 @@ const Menu = (props) => {
     return (
         <>
             <div style={{ width: "100%", height: "100%", borderBottom: "none", display: "flex" }}>
-                <div style={{ width: "20%", boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" }}>
-                    <div>
-                        <p style={{ cursor: "pointer" }} onClick={() =>navigate('/users') }>Users</p>
-                        <p style={{ cursor: "pointer" }} onClick={() => navigate('/comments')}>Comments</p>
-                    </div>
+                <div style={{ width: "15%", backgroundColor: "#002500" }}>
+                    <ul className="menu-list">
+
+                        <li className="menu-items">
+                            <a href="/comments" ><MdInsertComment size={20} /><span className="menu-typo">Comments</span></a>
+                        </li>
+                        <li className="menu-items">
+                            <a href="/users" ><FaUser size={20} /><span className="menu-typo">Users</span></a>
+                        </li>
+
+                    </ul>
                 </div>
-                <div style={{ width: "80%", padding: 12, background: "rgb(236, 217, 217)" }}>
-                    <div style={{ width: "100%", textAlign: "end" }}>
-                        <button onClick={handleLogout} style={{ margin: "20px" }}>LogOut</button>
+                <div style={{ width: "85%", background: "#F4F5FA" }}>
+                    <div style={{ textAlign: "end" }}>
+                        <button onClick={handleLogout} style={{ margin: "20px" }}><FiLogOut size={20} /><span className="menu-typo">LogOut</span></button>
                     </div>
                     <div>
                         {props.children}

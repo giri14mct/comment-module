@@ -1,1 +1,1 @@
-export const api_host = "https://6e70-2405-201-e03e-c0f1-fb08-8a3b-211e-b5f1.in.ngrok.io"
+export const api_host = "https://8gg2bwp5qk.execute-api.ap-south-1.amazonaws.com/stage"

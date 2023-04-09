@@ -34,7 +34,7 @@ const Login = () => {
       document.cookie = `id = ${data.data.id}; expires = ${new Date(2147483647 * 1000).toUTCString()}`
 
       handleToast(200, data.message)
-      navigate('/users')
+      navigate('/comments')
     }).catch(e => {
       handleToast(e.response.status, e.response.statusText)
     }
@@ -43,13 +43,13 @@ const Login = () => {
 
   return (
     <div class="main" >
-      <div class="container" style={{ height: 438 }}>
+      <div class="container" >
         <h1>Login</h1>
-        <div>
+        <div className="login-input">
           <label>Username</label>
           <input type="text" onChange={handleEmailChange} />
         </div>
-        <div>
+        <div className="login-input">
           <label>Password</label>
           <input type="password" placeholder="" onChange={handlePasswordChange} />
         </div>
